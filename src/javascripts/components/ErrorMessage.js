@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
-import { Alert } from 'reactstrap';
-import { isEmpty } from '../helpers';
+import React, { PropTypes } from "react";
+import { Alert } from "reactstrap";
+import { isEmpty } from "../helpers";
 
-const ErrorMessage = ({ errors, success }) => {
-  if (isEmpty(errors) && !success) {
+const ErrorMessage = ({ errors, isSubmitted }) => {
+  if (isEmpty(errors) || !isSubmitted) {
     return null;
   }
 
