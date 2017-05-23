@@ -1,17 +1,26 @@
-import React, {PropTypes} from 'react'
-import {
-  Form, FormGroup, Label, Input, Button
-} from 'reactstrap'
-import SuccessMessage from './SuccessMessage'
-import ErrorMessage from './ErrorMessage'
-import ValidationErrorMessage from './ValidationErrorMessage'
-import {getColorFromError} from '../helpers'
+import React, { PropTypes } from 'react';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import SuccessMessage from './SuccessMessage';
+import ErrorMessage from './ErrorMessage';
+import ValidationErrorMessage from './ValidationErrorMessage';
+import { getColorFromError } from '../helpers';
 
-
-const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL}) => (
+const ControlledForm = (
+  {
+    onSubmit,
+    onChangeEmail,
+    onChangePassword,
+    onChangeURL,
+    success,
+    errors,
+    exampleEmail,
+    examplePassword,
+    exampleURL
+  }
+) => (
   <Form onSubmit={onSubmit}>
     <SuccessMessage success={success} />
-    <ErrorMessage errors={errors} />
+    <ErrorMessage errors={errors} success={success} />
 
     <FormGroup color={getColorFromError(errors.exampleEmail)}>
       <Label for="exampleEmail">Email</Label>
@@ -19,7 +28,7 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         state={getColorFromError(errors.exampleEmail)}
         name="exampleEmail"
         value={exampleEmail}
-        onChange={onChangeInput}
+        onChange={onChangeEmail}
       />
       <ValidationErrorMessage message={errors.exampleEmail} />
     </FormGroup>
@@ -30,7 +39,7 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         state={getColorFromError(errors.examplePassword)}
         name="examplePassword"
         value={examplePassword}
-        onChange={onChangeInput}
+        onChange={onChangePassword}
       />
       <ValidationErrorMessage message={errors.examplePassword} />
     </FormGroup>
@@ -41,22 +50,22 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         state={getColorFromError(errors.exampleURL)}
         name="exampleURL"
         value={exampleURL}
-        onChange={onChangeInput}
+        onChange={onChangeURL}
       />
       <ValidationErrorMessage message={errors.exampleURL} />
     </FormGroup>
     <Button color="primary">Submit</Button>
   </Form>
-)
+);
 
 ControlledForm.propTypes = {
   onSubmit: PropTypes.func,
   success: PropTypes.bool,
-  errors: PropTypes.object,
-}
+  errors: PropTypes.object
+};
 
 ControlledForm.defaultProps = {
-  errors: {},
-}
+  errors: {}
+};
 
-export default ControlledForm
+export default ControlledForm;

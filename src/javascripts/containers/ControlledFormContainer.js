@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import ControlledForm from "../components/ControlledForm";
-import { validateForm } from "../helpers";
-import validate from "validate.js";
+import React, { Component } from 'react';
+import ControlledForm from '../components/ControlledForm';
+import { validateForm } from '../helpers';
+import validate from 'validate.js';
 
 class ControlledFormContainer extends Component {
   constructor() {
@@ -9,62 +9,45 @@ class ControlledFormContainer extends Component {
     this.state = {
       success: false,
       errors: {},
-      exampleEmail: "",
-      examplePassword: "",
-      exampleURL: ""
+      exampleEmail: '',
+      examplePassword: '',
+      exampleURL: ''
     };
   }
 
-  onChangeEmail = e => {};
-
-  onChangePassword = e => {};
-
-  onChanageURL = e => {};
-
-  onChangeInput = e => {
-    let tempConstraints = {};
-    let tempFormData = {};
-    if (e.target.name === "exampleEmail" || this.state.exampleEmail) {
-      tempConstraints.exampleEmail = {
-        presence: true,
-        email: true
-      };
-      tempFormData.exampleEmail = e.target.value;
-    }
-    // tempConstraints.exampleEmail = this.state.exampleEmail.length
-    //   ? this.state.exampleEmail
-    //   : "email@email.com";
-    // tempForm.examplePassword = this.state.examplePasssword.length
-    //   ? this.state.examplePassword
-    //   : "longenoughpasswooord";
-    // tempForm.exampleURL = this.state.exampleURL.length
-    //   ? this.state.exampleURL
-    //   : "http://www.demo.com";
-    const formConstraints = {
-      exampleEmail: {
-        presence: true,
-        email: true
-      },
-      examplePassword: {
-        presence: true,
-        length: { minimum: 12 }
-      },
-      exampleURL: {
-        url: true
+  onChangeEmail = e => {
+    const formData = { exampleEmail: e.target.value };
+    const emailErrors = validateForm(formData, 'email');
+    console.log('emailErrors:', emailErrors);
+    this.setState({
+      exampleEmail: e.target.value,
+      errors: {
+        ...this.state.errors,
+        exampleEmail: emailErrors.exampleEmail[0]
       }
-    };
-    validateForm = formData => {
-      return validate(formData, formConstraints);
-    };
-    const errors = validateForm({
-      exampleEmail: this.state.exampleEmail
-      // examplePassword: this.state.examplePassword,
-      // exampleURL: this.state.exampleURL
     });
+  };
+
+  onChangePassword = e => {
+    const formData = { examplePassword: e.target.value };
+    const passwordErrors = validateForm(formData, 'password');
 
     this.setState({
-      [e.target.name]: e.target.value,
-      errors
+      examplePassword: e.target.value,
+      errors: {
+        ...this.state.errors,
+        examplePassword: passwordErrors.examplePassword[0]
+      }
+    });
+  };
+
+  onChangeURL = e => {
+    const formData = { exampleURL: e.target.value };
+    const urlErrors = validateForm(formData, 'url');
+
+    this.setState({
+      exampleURL: e.target.value,
+      errors: { ...this.state.errors, exampleURL: urlErrors.exampleURL[0] }
     });
   };
 
@@ -78,10 +61,10 @@ class ControlledFormContainer extends Component {
     });
 
     if (errors) {
-      console.log("Errors", errors);
+      console.log('Errors', errors);
       this.setState({ errors });
     } else {
-      console.log("Success");
+      console.log('Success');
       this.formSuccess();
     }
   };
@@ -91,11 +74,11 @@ class ControlledFormContainer extends Component {
       {
         success: true,
         errors: {},
-        exampleEmail: "",
-        examplePassword: "",
-        exampleURL: ""
+        exampleEmail: '',
+        examplePassword: '',
+        exampleURL: ''
       },
-      () => console.log("Success!")
+      () => console.log('Success!')
     );
   };
 
@@ -103,7 +86,9 @@ class ControlledFormContainer extends Component {
     return (
       <ControlledForm
         onSubmit={this.onSubmit}
-        onChangeInput={this.onChangeInput}
+        onChangeEmail={this.onChangeEmail}
+        onChangePassword={this.onChangePassword}
+        onChangeURL={this.onChangeURL}
         {...this.state}
       />
     );

@@ -1,26 +1,25 @@
-import React, {PropTypes} from 'react'
-import {Alert} from 'reactstrap'
-import {isEmpty} from '../helpers'
+import React, { PropTypes } from 'react';
+import { Alert } from 'reactstrap';
+import { isEmpty } from '../helpers';
 
-
-const ErrorMessage = ({errors}) => {
-  if (isEmpty(errors)) {
-    return null
+const ErrorMessage = ({ errors, success }) => {
+  if (isEmpty(errors) && !success) {
+    return null;
   }
 
   return (
     <Alert color="danger">
       Oops, looks like you have some errors...
     </Alert>
-  )
-}
+  );
+};
 
 ErrorMessage.propTypes = {
-  errors: PropTypes.object.isRequired,
-}
+  errors: PropTypes.object.isRequired
+};
 
 ErrorMessage.defaultProps = {
-  errors: {},
-}
+  errors: {}
+};
 
-export default ErrorMessage
+export default ErrorMessage;
