@@ -32,7 +32,7 @@ class SerializedFormContainer extends Component {
     form.reset()
     this.setState({
       success: true,
-      error: {},
+      errors: {},
     }, () => console.log('Success!'))
   }
 

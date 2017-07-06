@@ -25,14 +25,16 @@ class ControlledFormContainer extends Component {
   }
 
   onBlur = (e) => {
-    if (e.target.value) {
-      this.setState({
-        errors: {
-          ...this.state.errors,
-          [e.target.name]: validateSingle(e.target.name, e.target.value)
-        }
-      })
+    if (!e.target.value) {
+      return
     }
+
+    this.setState({
+      errors: {
+        ...this.state.errors,
+        [e.target.name]: validateSingle(e.target.name, e.target.value)
+      }
+    })
   }
 
 
@@ -42,7 +44,6 @@ class ControlledFormContainer extends Component {
     const errors = validateForm({ exampleEmail: this.state.exampleEmail, exampleURL: this.state.exampleURL, examplePassword: this.state.examplePassword })
     if (errors) {
       this.setState({ errors })
-      console.log('submission errors', errors)
     } else {
       this.formSuccess()
     }

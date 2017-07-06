@@ -5,6 +5,11 @@ export function getColorFromError(error) {
 }
 
 export function isEmpty(object) {
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      return !object[key]
+    }
+  }
   return Object.keys(object).length === 0
 }
 
@@ -18,6 +23,7 @@ const formConstraints = {
     length: { minimum: 12 }
   },
   exampleURL: {
+    presence: false,
     url: true
   }
 }
@@ -28,5 +34,5 @@ export function validateForm(formData) {
 
 export function validateSingle(name, value) {
   const message = validate.single(value, formConstraints[name])
-  return message ? validate.capitalize(validate.prettify(name)) + ' ' + message : undefined
+  return message ? [validate.capitalize(validate.prettify(name)) + ' ' + message] : null
 }

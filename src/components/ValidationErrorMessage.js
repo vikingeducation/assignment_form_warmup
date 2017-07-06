@@ -6,11 +6,11 @@ const ValidationErrorMessage = ({ message }) => {
     return null
   }
   return (
-    <FormFeedback>{message}</FormFeedback>
+    <FormFeedback>{message.join(', ')}</FormFeedback>
   )
 }
 
 ValidationErrorMessage.propTypes = {
-  message: PropTypes.string
+  message: PropTypes.array
 }
 export default ValidationErrorMessage

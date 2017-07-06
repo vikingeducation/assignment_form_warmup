@@ -23,6 +23,7 @@ const ControlledForm = ({ onSubmit, onBlur, onChangeInput, success, errors, exam
            name="examplePassword" 
            value={examplePassword}
            onChange={onChangeInput} onBlur={onBlur}
+           type="password"
            />
           <ValidationErrorMessage message={errors.examplePassword} />
         </FormGroup>
