@@ -25,3 +25,8 @@ const formConstraints = {
 export function validateForm(formData) {
   return validate(formData, formConstraints)
 }
+
+export function validateSingle(name, value) {
+  const message = validate.single(value, formConstraints[name])
+  return message ? validate.capitalize(validate.prettify(name)) + ' ' + message : undefined
+}

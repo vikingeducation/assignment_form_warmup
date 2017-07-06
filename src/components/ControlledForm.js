@@ -5,7 +5,7 @@ import SuccessMessage from './SuccessMessage'
 import ErrorMessage from './ErrorMessage'
 import ValidationErrorMessage from './ValidationErrorMessage'
 
-const ControlledForm = ({ onSubmit, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL, ...rest }) => {
+const ControlledForm = ({ onSubmit, onBlur, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL, ...rest }) => {
 
   return (
     <Form onSubmit={onSubmit}>
@@ -13,7 +13,7 @@ const ControlledForm = ({ onSubmit, onChangeInput, success, errors, exampleEmail
       <SuccessMessage success={success} />
     <ErrorMessage errors={errors} />
           <Label for="exampleEmail">Email</Label>
-          <Input state={getColorFromError(errors.exampleEmail)} type="email" name="exampleEmail" value={exampleEmail} onChange={onChangeInput} />
+          <Input state={getColorFromError(errors.exampleEmail)} type="email" name="exampleEmail" value={exampleEmail} onChange={onChangeInput} onBlur={onBlur}/>
           <ValidationErrorMessage message={errors.exampleEmail} />
         </FormGroup>
         <FormGroup color={getColorFromError(errors.examplePassword)}>
@@ -22,7 +22,7 @@ const ControlledForm = ({ onSubmit, onChangeInput, success, errors, exampleEmail
           state={getColorFromError(errors.examplePassword)}
            name="examplePassword" 
            value={examplePassword}
-           onChange={onChangeInput}
+           onChange={onChangeInput} onBlur={onBlur}
            />
           <ValidationErrorMessage message={errors.examplePassword} />
         </FormGroup>
@@ -32,7 +32,7 @@ const ControlledForm = ({ onSubmit, onChangeInput, success, errors, exampleEmail
           state={getColorFromError(errors.exampleURL)}
           name="exampleURL"
           value={exampleURL}
-          onChange={onChangeInput}
+          onChange={onChangeInput} onBlur={onBlur}
            />
           <ValidationErrorMessage message={errors.exampleURL} />
         </FormGroup>
