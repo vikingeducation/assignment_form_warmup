@@ -8,7 +8,7 @@ import ValidationErrorMessage from './ValidationErrorMessage'
 import {getColorFromError} from '../helpers'
 
 
-const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL}) => (
+const ControlledForm = ({onSubmit, onBlurEmail, onBlurPassword, onBlurURL, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL}) => (
   <Form onSubmit={onSubmit}>
     <SuccessMessage success={success} />
     <ErrorMessage errors={errors} />
@@ -18,8 +18,10 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
       <Input
         state={getColorFromError(errors.exampleEmail)}
         name="exampleEmail"
+        id="controlledExampleEmail"
         value={exampleEmail}
         onChange={onChangeInput}
+        onBlur={onBlurEmail}
       />
       <ValidationErrorMessage message={errors.exampleEmail} />
     </FormGroup>
@@ -29,8 +31,10 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
       <Input
         state={getColorFromError(errors.examplePassword)}
         name="examplePassword"
+        id="controlledExamplePassword"
         value={examplePassword}
         onChange={onChangeInput}
+        onBlur={onBlurPassword}
       />
       <ValidationErrorMessage message={errors.examplePassword} />
     </FormGroup>
@@ -40,8 +44,10 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
       <Input
         state={getColorFromError(errors.exampleURL)}
         name="exampleURL"
+        id="controlledExampleURL"
         value={exampleURL}
         onChange={onChangeInput}
+        onBlur={onBlurURL}
       />
       <ValidationErrorMessage message={errors.exampleURL} />
     </FormGroup>

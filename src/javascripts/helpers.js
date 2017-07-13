@@ -25,3 +25,15 @@ const formConstraints = {
 export function validateForm(formData) {
   return validate(formData, formConstraints)
 }
+
+export function validateEmail(formData) {
+  return validate.single(formData, formConstraints.exampleEmail)
+}
+
+export function validatePassword(formData) {
+  return validate.single(formData, formConstraints.examplePassword)
+}
+
+export function validateURL(formData) {
+  return validate.single(formData, formConstraints.exampleURL)
+}

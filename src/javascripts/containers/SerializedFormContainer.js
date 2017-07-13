@@ -18,7 +18,6 @@ class SerializedFormContainer extends Component {
     const data = serialize(form, {hash: true})
     console.log(data);
     const errors = validateForm(data)
-
     if (errors) {
       this.setState({errors})
     } else {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ControlledForm from '../components/ControlledForm'
-import {validateForm} from '../helpers'
+import {validateForm, validateEmail, validatePassword, validateURL} from '../helpers';
 
 class ControlledFormContainer extends Component {
   constructor() {
@@ -31,8 +31,70 @@ class ControlledFormContainer extends Component {
     if (errors) {
       this.setState({errors})
     } else {
-      console.log(data)
       this.formSuccess()
+    }
+  }
+  
+  onBlurEmail = (e) => {
+    let data = this.state.exampleEmail;
+    const errors = validateEmail(data)
+    console.log('########')
+    console.log(errors);
+    console.log('########')
+    if (errors) {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          exampleEmail: errors[0]
+        }
+      })
+    } else {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          exampleEmail: ''
+        }
+      })
+    }
+  }
+  
+  onBlurPassword = (e) => {
+    let data = this.state.examplePassword
+    const errors = validatePassword(data)
+    if (errors) {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          examplePassword: errors[0]
+        }
+      })
+    } else {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          examplePassword: ''
+        }
+      })
+    }
+  }
+
+  onBlurURL = (e) => {
+    let data = this.state.exampleURL
+    const errors = validateURL(data)
+    if (errors) {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          exampleURL: errors[0]
+        }
+      })
+    } else {
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          exampleUrl: ''
+        }
+      })
     }
   }
 
@@ -51,6 +113,9 @@ class ControlledFormContainer extends Component {
       <ControlledForm
         onSubmit={this.onSubmit}
         onChangeInput={this.onChangeInput}
+        onBlurEmail={this.onBlurEmail}
+        onBlurPassword={this.onBlurPassword}
+        onBlurURL={this.onBlurURL}
         {...this.state}
       />
     )
