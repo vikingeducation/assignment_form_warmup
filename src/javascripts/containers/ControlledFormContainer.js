@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ControlledForm from '../components/ControlledForm'
+import {validateForm} from '../helpers'
 
 class ControlledFormContainer extends Component {
   constructor() {
@@ -21,8 +22,18 @@ class ControlledFormContainer extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    this.formSuccess()
+    let data = {
+      exampleEmail: this.state.exampleEmail,
+      examplePassword: this.state.examplePassword,
+      exampleURL: this.state.exampleURL
+    }
+    const errors = validateForm(data)
+    if (errors) {
+      this.setState({errors})
+    } else {
+      console.log(data)
+      this.formSuccess()
+    }
   }
 
   formSuccess = () => {
