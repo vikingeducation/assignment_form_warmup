@@ -5,7 +5,16 @@ export function getColorFromError(error) {
 }
 
 export function isEmpty(object) {
-  return Object.keys(object).length === 0
+  let isObjectEmpty = true;
+  if (Object.keys(object).length > 0) {
+    for (let key in object) {
+      if (object[key].length > 0) {
+        isObjectEmpty = false;
+        return;
+      }
+    }
+  }
+  return isObjectEmpty;
 }
 
 const formConstraints = {
