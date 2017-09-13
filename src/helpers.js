@@ -9,15 +9,15 @@ export function isEmpty(object) {
 }
 
 const formConstraints = {
-  exampleEmail: {
+  email: {
     presence: true,
     email: true
   },
-  examplePassword: {
+  password: {
     presence: true,
     length: { minimum: 12 }
   },
-  exampleURL: {
+  url: {
     url: true
   }
 };

@@ -6,48 +6,46 @@ import ErrorMessage from "./ErrorMessage";
 import ValidationErrorMessage from "./ValidationErrorMessage";
 import { getColorFromError } from "../helpers";
 
-const ControlledForm = ({
-  actions,
-  status,
-  values
-}) => (
-  <Form onSubmit={actions.onSubmit}>
+const ControlledForm = ({ actions, status, values }) => (
+  <Form>
     <SuccessMessage success={status.success} />
     <ErrorMessage errors={status.errors} />
 
-    <FormGroup color={getColorFromError(errors.email)}>
+    <FormGroup color={getColorFromError(status.errors.email)}>
       <Label for="email">Email</Label>
       <Input
-        state={getColorFromError(errors.email)}
+        state={getColorFromError(status.errors.email)}
         name="email"
         value={values.email}
         onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.email} />
+      <ValidationErrorMessage messages={status.errors.email} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.password)}>
+    <FormGroup color={getColorFromError(status.errors.password)}>
       <Label for="password">Password</Label>
       <Input
-        state={getColorFromError(errors.password)}
+        state={getColorFromError(status.errors.password)}
         name="password"
         value={values.password}
         onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.password} />
+      <ValidationErrorMessage messages={status.errors.password} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.url)}>
+    <FormGroup color={getColorFromError(status.errors.url)}>
       <Label for="url">URL</Label>
       <Input
-        state={getColorFromError(errors.url)}
+        state={getColorFromError(status.errors.url)}
         name="url"
         value={values.url}
         onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.url} />
+      <ValidationErrorMessage messages={status.errors.url} />
     </FormGroup>
-    <Button type='button' color="primary">Submit</Button>
+    <Button onClick={actions.onSubmit} type="button" color="primary">
+      Submit
+    </Button>
   </Form>
 );
 

@@ -2,16 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FormFeedback } from "reactstrap";
 
-const ValidationErrorMessage = ({ message }) => {
-  if (!message) {
+const ValidationErrorMessage = ({ messages }) => {
+  if (!messages) {
     return null;
   }
 
-  return <FormFeedback>{message}</FormFeedback>;
+  return (
+    <div>{messages.map(message => <FormFeedback>{message}</FormFeedback>)}</div>
+  );
 };
 
 ValidationErrorMessage.propTypes = {
-  message: PropTypes.string
+  message: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default ValidationErrorMessage;
