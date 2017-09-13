@@ -1,4 +1,4 @@
-import validation from "./validation";
-console.log("validation: ", validation);
+import validation from './validation';
+const emailValidation = validation.emailValidation;
 
-export { validation };
+export { emailValidation };

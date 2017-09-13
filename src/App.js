@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { validation } from "./services";
-import swal from "sweetalert2";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { emailValidation } from './services';
+import swal from 'sweetalert2';
 
-console.log(validation);
+console.log(emailValidation);
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      email: "awillenrbink@gmail.com",
-      password: "password",
+      email: 'awillenrbink@gmail.com',
+      password: 'password',
       url:
-        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
+        'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions'
     };
   }
 
@@ -26,20 +26,20 @@ class App extends Component {
     });
   };
 
-  // onSubmitForm = e => {
-  //   e.preventDefault();
-  //   const { email, password, url } = this.state;
-  //   console.log("email: ", email);
-  //   let result = emailValidation(email);
-  //   console.log("result: ", result);
-  //   !result.length
-  //     ? alert("you made it")
-  //     : swal({
-  //         title: "Errors",
-  //         type: "error",
-  //         html: `${result[0]}`
-  //       });
-  // };
+  onSubmitForm = e => {
+    e.preventDefault();
+    const { email, password, url } = this.state;
+    console.log('email: ', email);
+    let result = emailValidation(email);
+    console.log('result: ', result);
+    !result.length
+      ? alert('you made it')
+      : swal({
+          title: 'Errors',
+          type: 'error',
+          html: `${result[0]}`
+        });
+  };
 
   render() {
     return (
