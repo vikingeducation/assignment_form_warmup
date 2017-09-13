@@ -22,6 +22,7 @@ const ControlledForm = ({
     <FormGroup color={getColorFromError(errors.exampleEmail)}>
       <Label for="exampleEmail">Email</Label>
       <Input
+        type="email"
         state={getColorFromError(errors.exampleEmail)}
         name="exampleEmail"
         value={exampleEmail}
@@ -34,6 +35,7 @@ const ControlledForm = ({
     <FormGroup color={getColorFromError(errors.examplePassword)}>
       <Label for="examplePassword">Password</Label>
       <Input
+        type="password"
         state={getColorFromError(errors.examplePassword)}
         name="examplePassword"
         value={examplePassword}
