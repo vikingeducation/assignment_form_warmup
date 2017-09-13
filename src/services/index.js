@@ -1,4 +1,5 @@
-import validation from './validation';
+import validation from "./validation";
 const emailValidation = validation.emailValidation;
+const passwordLengthValidation = validation.passwordLengthValidation;
 
-export { emailValidation };
+export { emailValidation, passwordLengthValidation };
