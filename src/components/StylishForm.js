@@ -11,7 +11,6 @@ import {
 import TextField from 'material-ui/TextField';
 import { pink500, green600 } from 'material-ui/styles/colors';
 import FontIcon from 'material-ui/FontIcon';
-import Badge from 'material-ui/Badge';
 import FlatButton from 'material-ui/RaisedButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
@@ -85,12 +84,7 @@ const FormCard = props => {
 					</div>
 					<br />
 					<CardActions>
-						<RaisedButton
-							onClick={props.successOpen}
-							type="submit"
-							label="Submit"
-							secondary={true}
-						/>
+						<RaisedButton type="submit" label="Submit" secondary={true} />
 					</CardActions>
 				</form>
 			</CardText>
