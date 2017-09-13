@@ -18,6 +18,7 @@ class ControlledFormContainer extends Component {
       exampleURL: ""
     };
   }
+
   //USER STORIES
   //I WANT YOUR FORM NOT TO SUCK
   //I SHOULDNT HAVE TO TYPE
@@ -29,31 +30,34 @@ class ControlledFormContainer extends Component {
     exampleURL: validateURL
   };
   onChangeInput = async e => {
+    let inputName = e.target.name;
     this.setState({ [e.target.name]: e.target.value }, () => {
-      return null;
+      let validateErrors = this.inputValidationHash[inputName]({
+        [inputName]: this.state[inputName]
+      });
+      if (validateErrors) {
+        this.setState({
+          errors: {
+            ...this.state.errors,
+            [inputName]: validateErrors[inputName]
+          }
+        });
+      } else {
+        let error = this.state.errors;
+        delete error[inputName];
+        this.setState({
+          errors: error
+        });
+      }
     });
-
-    // let validateErrors;
-    // console.log("value = ", e.target.value);
-    let validateErrors = this.inputValidationHash[e.target.name](
-      this.state[e.target.name]
-    );
-
-    if (validateErrors) {
-      this.setState({ errors: validateErrors });
-    } else {
-      this.setState({ errors: {} });
-    }
   };
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     let validateErrors;
     if (!(validateErrors = validateForm(this.state))) {
       this.formSuccess();
     } else {
-      console.log("errors = ", validateErrors);
       this.formError(validateErrors);
     }
   };

@@ -27,6 +27,7 @@ export function validateForm(formData) {
 }
 
 export function validateEmail(formData) {
+  console.log("formdata", formData);
   return validate(formData, { exampleEmail: formConstraints["exampleEmail"] });
 }
 
