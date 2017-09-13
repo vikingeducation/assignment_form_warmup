@@ -8,7 +8,11 @@ const ValidationErrorMessage = ({ messages }) => {
   }
 
   return (
-    <div>{messages.map(message => <FormFeedback>{message}</FormFeedback>)}</div>
+    <div>
+      {messages.map(message => (
+        <FormFeedback key={message}>{message}</FormFeedback>
+      ))}
+    </div>
   );
 };
 

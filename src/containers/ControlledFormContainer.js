@@ -29,8 +29,14 @@ class ControlledFormContainer extends Component {
   validator = values => {};
 
   onSubmit = () => {
-    if (!validateForm(this.state.values)) this.formSuccess();
-    else alert("ya messed up chief");
+    const errors = validateForm(this.state.values);
+    if (!errors) this.formSuccess();
+    else {
+      alert("ya messed up chief");
+      this.setState({
+        status: { ...this.state.status, errors: validateSingle(name, value) }
+      });
+    }
   };
 
   formSuccess = () => {
