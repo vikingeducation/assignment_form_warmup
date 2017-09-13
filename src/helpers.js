@@ -27,7 +27,7 @@ export function validateForm(formData) {
 }
 
 export function validateSingle(field, value) {
-  return validate(
-    {[field]:value},
-    {[field]:formConstraints[field]})
+  return (
+    validate({ [field]: value }, { [field]: formConstraints[field] }) || {}
+  );
 }
