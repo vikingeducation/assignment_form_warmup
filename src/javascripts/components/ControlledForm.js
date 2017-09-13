@@ -29,7 +29,13 @@ const ControlledForm = ({
         onChange={onChangeInput}
         onBlur={onBlurInput}
       />
-      <ValidationErrorMessage message={errors.exampleEmail} />
+      {!errors.exampleEmail ? null : (
+        errors.exampleEmail.map(error => (
+          <p>
+            <ValidationErrorMessage message={error} />
+          </p>
+        ))
+      )}
     </FormGroup>
 
     <FormGroup color={getColorFromError(errors.examplePassword)}>
@@ -42,7 +48,13 @@ const ControlledForm = ({
         onChange={onChangeInput}
         onBlur={onBlurInput}
       />
-      <ValidationErrorMessage message={errors.examplePassword} />
+      {!errors.examplePassword ? null : (
+        errors.examplePassword.map(error => (
+          <p>
+            <ValidationErrorMessage message={error} />
+          </p>
+        ))
+      )}
     </FormGroup>
 
     <FormGroup color={getColorFromError(errors.exampleURL)}>
@@ -54,7 +66,13 @@ const ControlledForm = ({
         onChange={onChangeInput}
         onBlur={onBlurInput}
       />
-      <ValidationErrorMessage message={errors.exampleURL} />
+      {!errors.exampleURL ? null : (
+        errors.exampleURL.map(error => (
+          <p>
+            <ValidationErrorMessage message={error} />
+          </p>
+        ))
+      )}
     </FormGroup>
     <Button color="primary">Submit</Button>
   </Form>
