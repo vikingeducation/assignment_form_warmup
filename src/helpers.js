@@ -25,3 +25,9 @@ const formConstraints = {
 export function validateForm(formData) {
   return validate(formData, formConstraints);
 }
+
+export function validateSingle(field, value) {
+  return validate(
+    {[field]:value},
+    {[field]:formConstraints[field]})
+}
