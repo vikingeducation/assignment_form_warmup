@@ -30,7 +30,8 @@ export default class SerializedForm extends Component {
     const name = e.target.name;
     this.setState({
       [name]: {
-        text: e.target.value
+        text: e.target.value,
+        isValid: validators[name].test(e.target.value)
       }
     });
   };
