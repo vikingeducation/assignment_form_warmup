@@ -10,12 +10,18 @@ export default class SerializedForm extends Component {
 		super(props);
 
 		this.state = {
-			nameText: '',
-			nameIsValid: false,
-			emailText: '',
-			emailIsValid: false,
-			phoneText: '',
-			phoneIsValid: false
+			name: {
+				text: '',
+				isValid: false
+			},
+			email: {
+				text: '',
+				isValid: false
+			},
+			phone: {
+				text: '',
+				isValid: false
+			}
 		};
 	}
 
@@ -23,18 +29,20 @@ export default class SerializedForm extends Component {
 		// Get name.
 		const name = e.target.name;
 		this.setState({
-			[`${name}Text`]: e.target.value
+			[name]: {
+				text: e.target.value
+			}
 		});
 	};
 
 	onSubmit = e => {
-		e.preventDefault();
 		const state = {};
-		for (let key in validators) {
-			const val = this.state[`${key}Text`].text;
-			state[`${key}IsValid`] = validators[key].test(val);
+		for (let key in this.state) {
+			const val = this.state[key].text;
+			state[key] = {
+				isValid: validators[key].test(val)
+			};
 		}
-		console.log(state);
 		this.setState(state);
 	};
 
@@ -43,30 +51,30 @@ export default class SerializedForm extends Component {
 			<form onSubmit={this.onSubmit} style={{ margin: '5em' }}>
 				Name:{' '}
 				<input
-					onChange={this.onChange}
 					type="text"
 					name="name"
-					value={this.state.nameText}
+					onChange={this.onChange}
+					value={this.state.name.text}
 				/>{' '}
-				<span>{this.state.nameIsValid ? 'Valid' : 'Invalid'}</span>
+				<span>{this.state.name.isValid ? 'Valid' : 'Invalid'}</span>
 				<br />
 				Email:{' '}
 				<input
-					onChange={this.onChange}
 					type="email"
 					name="email"
-					value={this.state.emailText}
+					onChange={this.onChange}
+					value={this.state.email.text}
 				/>
-				<span>{this.state.emailIsValid ? 'Valid' : 'Invalid'}</span>
+				<span>{this.state.email.isValid ? 'Valid' : 'Invalid'}</span>
 				<br />
 				Phone:{' '}
 				<input
-					onChange={this.onChange}
 					type="phone"
 					name="phone"
-					value={this.state.phoneText}
+					onChange={this.onChange}
+					value={this.state.phone.text}
 				/>
-				<span>{this.state.phoneIsValid ? 'Valid' : 'Invalid'}</span>
+				<span>{this.state.phone.isValid ? 'Valid' : 'Invalid'}</span>
 				<br />
 				<button type="submit">Submit</button>
 			</form>
