@@ -7,51 +7,47 @@ import ValidationErrorMessage from "./ValidationErrorMessage";
 import { getColorFromError } from "../helpers";
 
 const ControlledForm = ({
-  onSubmit,
-  onChangeInput,
-  success,
-  errors,
-  exampleEmail,
-  examplePassword,
-  exampleURL
+  actions,
+  status,
+  values
 }) => (
-  <Form onSubmit={onSubmit}>
-    <SuccessMessage success={success} />
-    <ErrorMessage errors={errors} />
+  <Form onSubmit={actions.onSubmit}>
+    <SuccessMessage success={status.success} />
+    <ErrorMessage errors={status.errors} />
 
-    <FormGroup color={getColorFromError(errors.exampleEmail)}>
-      <Label for="exampleEmail">Email</Label>
+    <FormGroup color={getColorFromError(errors.email)}>
+      <Label for="email">Email</Label>
       <Input
-        state={getColorFromError(errors.exampleEmail)}
-        name="exampleEmail"
-        value={exampleEmail}
-        onChange={onChangeInput}
+        state={getColorFromError(errors.email)}
+        name="email"
+        value={values.email}
+        onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.exampleEmail} />
+      <ValidationErrorMessage message={errors.email} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.examplePassword)}>
-      <Label for="examplePassword">Password</Label>
+    <FormGroup color={getColorFromError(errors.password)}>
+      <Label for="password">Password</Label>
       <Input
-        state={getColorFromError(errors.examplePassword)}
-        name="examplePassword"
-        value={examplePassword}
-        onChange={onChangeInput}
+        state={getColorFromError(errors.password)}
+        name="password"
+        value={values.password}
+        onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.examplePassword} />
+      <ValidationErrorMessage message={errors.password} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.exampleURL)}>
-      <Label for="exampleURL">URL</Label>
+    <FormGroup color={getColorFromError(errors.url)}>
+      <Label for="url">URL</Label>
       <Input
-        state={getColorFromError(errors.exampleURL)}
-        name="exampleURL"
-        value={exampleURL}
-        onChange={onChangeInput}
+        state={getColorFromError(errors.url)}
+        name="url"
+        value={values.url}
+        onChange={actions.onChangeInput}
       />
-      <ValidationErrorMessage message={errors.exampleURL} />
+      <ValidationErrorMessage message={errors.url} />
     </FormGroup>
-    <Button color="primary">Submit</Button>
+    <Button type='button' color="primary">Submit</Button>
   </Form>
 );
 

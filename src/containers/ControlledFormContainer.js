@@ -1,46 +1,62 @@
 import React, {Component} from 'react'
 import ControlledForm from '../components/ControlledForm'
+import validateForm from '../helpers.js'
 
 class ControlledFormContainer extends Component {
   constructor() {
     super()
     this.state = {
-      success: false,
-      errors: {},
-      exampleEmail: '',
-      examplePassword: '',
-      exampleURL: '',
+      status: {
+        success: false,
+        errors: {},
+      }
+      values: {
+        email: '',
+        password: '',
+        url: '',
+      }
     }
   }
 
   onChangeInput = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      values: {
+        ...this.state.values,
+        [e.target.name]: e.target.value}
+      }
     })
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
     console.log(this.state)
     this.formSuccess()
   }
 
   formSuccess = () => {
     this.setState({
-      success: true,
-      errors: {},
-      exampleEmail: '',
-      examplePassword: '',
-      exampleURL: '',
+      status: {
+        success: false,
+        errors: {},
+      }
+      values: {
+        email: '',
+        password: '',
+        url: '',
+      }
     }, () => console.log('Success!'))
   }
 
   render() {
+    const actions = {
+      onSubmit: this.onSubmit,
+      onChangeInput: this.onChangeInput
+    }
+
     return (
       <ControlledForm
-        onSubmit={this.onSubmit}
-        onChangeInput={this.onChangeInput}
-        {...this.state}
+        actions={actions}
+        status={...this.state.status}
+        values={...this.state.values}
       />
     )
   }
