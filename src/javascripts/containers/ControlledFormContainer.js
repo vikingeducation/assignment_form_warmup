@@ -22,10 +22,14 @@ class ControlledFormContainer extends Component {
 
   onBlurInput = e => {
     const errors = validateForm(this.state);
-    const currentErrors = {
-      ...this.state.errors,
-      [e.target.name]: errors[e.target.name]
-    };
+    const currentErrors = !errors
+      ? {}
+      : {
+          ...this.state.errors,
+          [e.target.name]: errors[e.target.name]
+        };
+
+    console.log(errors);
     this.setState({ errors: currentErrors });
   };
 
