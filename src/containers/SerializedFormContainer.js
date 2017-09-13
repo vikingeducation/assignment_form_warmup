@@ -1,37 +1,41 @@
-import React, {Component} from 'react'
-import serialize from 'form-serialize'
-import SerializedForm from '../components/SerializedForm'
-import {validateForm} from '../helpers'
+import React, { Component } from "react";
+import serialize from "form-serialize";
+import SerializedForm from "../components/SerializedForm";
+import { validateForm } from "../helpers";
 
 class SerializedFormContainer extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       success: false,
-      errors: {},
-    }
+      errors: {}
+    };
   }
 
-  onSubmit = (e) => {
-    e.preventDefault()
-    const form = e.target
-    const data = serialize(form, {hash: true})
-    const errors = validateForm(data)
+  onSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    const data = serialize(form, { hash: true });
+    const errors = validateForm(data);
+    console.log(errors);
 
     if (errors) {
-      this.setState({errors})
+      this.setState({ errors });
     } else {
-      console.log(data)
-      this.formSuccess(form)
+      console.log(data);
+      this.formSuccess(form);
     }
-  }
+  };
 
   formSuccess(form) {
-    form.reset()
-    this.setState({
-      success: true,
-      errors: {},
-    }, () => console.log('Success!'))
+    form.reset();
+    this.setState(
+      {
+        success: true,
+        errors: {}
+      },
+      () => console.log("Success!")
+    );
   }
 
   render() {
@@ -41,8 +45,8 @@ class SerializedFormContainer extends Component {
         success={this.state.success}
         errors={this.state.errors}
       />
-    )
+    );
   }
 }
 
-export default SerializedFormContainer
+export default SerializedFormContainer;

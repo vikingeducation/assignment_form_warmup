@@ -6,6 +6,7 @@ const ValidationErrorMessage = ({ messages }) => {
   if (!messages) {
     return null;
   }
+  console.log(messages);
 
   return (
     <div>

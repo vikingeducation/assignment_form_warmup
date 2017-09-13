@@ -34,7 +34,7 @@ class ControlledFormContainer extends Component {
     else {
       alert("ya messed up chief");
       this.setState({
-        status: { ...this.state.status, errors: validateSingle(name, value) }
+        status: { ...this.state.status, errors }
       });
     }
   };

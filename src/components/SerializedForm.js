@@ -11,30 +11,30 @@ const FormExample = ({ onSubmit, success, errors }) => (
     <SuccessMessage success={success} />
     <ErrorMessage errors={errors} />
 
-    <FormGroup color={getColorFromError(errors.exampleEmail)}>
-      <Label for="exampleEmail">Email</Label>
+    <FormGroup color={getColorFromError(errors.email)}>
+      <Label for="email">Email</Label>
       <Input
-        state={getColorFromError(errors.exampleEmail)}
-        name="exampleEmail"
+        state={getColorFromError(errors.email)}
+        name="email"
         type="email"
       />
-      <ValidationErrorMessage message={errors.exampleEmail} />
+      <ValidationErrorMessage message={errors.email} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.examplePassword)}>
-      <Label for="examplePassword">Password</Label>
+    <FormGroup color={getColorFromError(errors.password)}>
+      <Label for="password">Password</Label>
       <Input
-        state={getColorFromError(errors.examplePassword)}
-        name="examplePassword"
+        state={getColorFromError(errors.password)}
+        name="password"
         type="password"
       />
-      <ValidationErrorMessage message={errors.examplePassword} />
+      <ValidationErrorMessage message={errors.password} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.exampleURL)}>
-      <Label for="exampleURL">URL</Label>
-      <Input state={getColorFromError(errors.exampleURL)} name="exampleURL" />
-      <ValidationErrorMessage message={errors.exampleURL} />
+    <FormGroup color={getColorFromError(errors.url)}>
+      <Label for="url">URL</Label>
+      <Input state={getColorFromError(errors.url)} name="url" />
+      <ValidationErrorMessage message={errors.url} />
     </FormGroup>
 
     <Button color="primary">Submit</Button>
