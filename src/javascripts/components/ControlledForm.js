@@ -1,14 +1,20 @@
-import React, {PropTypes} from 'react'
-import {
-  Form, FormGroup, Label, Input, Button
-} from 'reactstrap'
-import SuccessMessage from './SuccessMessage'
-import ErrorMessage from './ErrorMessage'
-import ValidationErrorMessage from './ValidationErrorMessage'
-import {getColorFromError} from '../helpers'
+import React, { PropTypes } from "react";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import SuccessMessage from "./SuccessMessage";
+import ErrorMessage from "./ErrorMessage";
+import ValidationErrorMessage from "./ValidationErrorMessage";
+import { getColorFromError } from "../helpers";
 
-
-const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail, examplePassword, exampleURL}) => (
+const ControlledForm = ({
+  onSubmit,
+  onChangeInput,
+  onBlurInput,
+  success,
+  errors,
+  exampleEmail,
+  examplePassword,
+  exampleURL
+}) => (
   <Form onSubmit={onSubmit}>
     <SuccessMessage success={success} />
     <ErrorMessage errors={errors} />
@@ -20,6 +26,7 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         name="exampleEmail"
         value={exampleEmail}
         onChange={onChangeInput}
+        onBlur={onBlurInput}
       />
       <ValidationErrorMessage message={errors.exampleEmail} />
     </FormGroup>
@@ -31,6 +38,7 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         name="examplePassword"
         value={examplePassword}
         onChange={onChangeInput}
+        onBlur={onBlurInput}
       />
       <ValidationErrorMessage message={errors.examplePassword} />
     </FormGroup>
@@ -42,21 +50,22 @@ const ControlledForm = ({onSubmit, onChangeInput, success, errors, exampleEmail,
         name="exampleURL"
         value={exampleURL}
         onChange={onChangeInput}
+        onBlur={onBlurInput}
       />
       <ValidationErrorMessage message={errors.exampleURL} />
     </FormGroup>
     <Button color="primary">Submit</Button>
   </Form>
-)
+);
 
 ControlledForm.propTypes = {
   onSubmit: PropTypes.func,
   success: PropTypes.bool,
-  errors: PropTypes.object,
-}
+  errors: PropTypes.object
+};
 
 ControlledForm.defaultProps = {
-  errors: {},
-}
+  errors: {}
+};
 
-export default ControlledForm
+export default ControlledForm;

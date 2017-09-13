@@ -20,10 +20,19 @@ class ControlledFormContainer extends Component {
     });
   };
 
+  onBlurInput = e => {
+    const errors = validateForm(this.state);
+    const currentErrors = {
+      ...this.state.errors,
+      [e.target.name]: errors[e.target.name]
+    };
+    this.setState({ errors: currentErrors });
+  };
+
   onSubmit = e => {
     e.preventDefault();
-    const errors = validateForm(this.state);
 
+    const errors = validateForm(this.state);
     if (errors) {
       this.setState({ errors });
     } else {
@@ -50,6 +59,7 @@ class ControlledFormContainer extends Component {
       <ControlledForm
         onSubmit={this.onSubmit}
         onChangeInput={this.onChangeInput}
+        onBlurInput={this.onBlurInput}
         {...this.state}
       />
     );
