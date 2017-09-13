@@ -17,36 +17,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import 'material-design-icons/iconfont/material-icons.css';
 
-class SuccessDialog extends Component {
-	render() {
-		const actions = [
-			<FlatButton
-				label="Done"
-				primary={true}
-				keyboardFocused={true}
-				onClick={this.props.handleClose}
-			/>
-		];
-		return (
-			<div>
-				<Dialog
-					title="Form Submitted Successfully!"
-					actions={actions}
-					modal={false}
-					open={this.props.open}
-					onRequestClose={this.props.handleClose}
-				>
-					<h2>
-						Congratulations, you submitted the form and everything was valid.
-						Luckily, everything was valid, because you don't want to know what
-						would've happened if everything wasn't valid.
-					</h2>
-				</Dialog>
-			</div>
-		);
-	}
-}
-
 const Showable = props => {
 	return props.condition ? props.children : null;
 };
@@ -125,6 +95,34 @@ const FormCard = props => {
 				</form>
 			</CardText>
 		</Card>
+	);
+};
+
+const SuccessDialog = props => {
+	const actions = [
+		<FlatButton
+			label="Done"
+			primary={true}
+			keyboardFocused={true}
+			onClick={props.handleClose}
+		/>
+	];
+	return (
+		<div>
+			<Dialog
+				title="Form Submitted Successfully!"
+				actions={actions}
+				modal={false}
+				open={props.open}
+				onRequestClose={props.handleClose}
+			>
+				<h2>
+					Congratulations, you submitted the form and everything was valid.
+					Luckily, everything was valid, because you don't want to know what
+					would've happened if everything wasn't valid.
+				</h2>
+			</Dialog>
+		</div>
 	);
 };
 
