@@ -32,7 +32,10 @@ export default class Form extends Component {
       .join(" ");
 
     !errors.length
-      ? alert("you made it")
+      ? swal({
+          title: "Success",
+          type: "success"
+        })
       : swal({
           title: "Errors",
           type: "error",

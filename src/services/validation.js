@@ -24,8 +24,16 @@ const _validateCreator = condition => input => {
   return null;
 };
 
+const _emailValidator = _validateCreator(_emailRegexCondition);
+const _passwordLengthValidator = _validateCreator(_passwordLengthCondition);
+
 export default {
-  emailValidation: input => _validateCreator(_emailRegexCondition)(input),
-  passwordLengthValidation: input =>
-    _validateCreator(_passwordLengthCondition)(input)
+  emailValidation: input => _emailValidator(input),
+  passwordLengthValidation: input => _passwordLengthValidator(input)
 };
+
+// export default {
+//   emailValidation: input => _validateCreator(_emailRegexCondition)(input),
+//   passwordLengthValidation: input =>
+//     _validateCreator(_passwordLengthCondition)(input)
+// };
