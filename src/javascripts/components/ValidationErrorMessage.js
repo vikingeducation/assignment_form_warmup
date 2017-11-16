@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FormFeedback } from "reactstrap";
+import { Alert } from "reactstrap";
 
 const ValidationErrorMessage = ({ message }) => {
+  console.log(message, !message);
   if (!message) {
     return null;
   }
 
-  return <FormFeedback>{message[0]}</FormFeedback>;
+  return <Alert color="danger">{message[0]}</Alert>;
 };
 
 ValidationErrorMessage.propTypes = {

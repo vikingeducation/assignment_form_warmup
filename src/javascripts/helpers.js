@@ -1,7 +1,7 @@
 import validate from "validate.js";
 
 export function getColorFromError(error) {
-  return !!error ? "danger" : "default";
+  return !!error ? "text-danger" : "text-default";
 }
 
 export function isEmpty(object) {

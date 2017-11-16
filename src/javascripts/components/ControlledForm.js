@@ -19,7 +19,7 @@ const ControlledForm = ({
     <SuccessMessage success={success} />
     <ErrorMessage errors={errors} />
 
-    <FormGroup color={getColorFromError(errors.exampleEmail)}>
+    <FormGroup className={getColorFromError(errors.exampleEmail)}>
       <Label for="exampleEmail">Email</Label>
       <Input
         valid={!!getColorFromError(errors.exampleEmail)}
@@ -30,7 +30,7 @@ const ControlledForm = ({
       <ValidationErrorMessage message={errors.exampleEmail} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.examplePassword)}>
+    <FormGroup className={getColorFromError(errors.examplePassword)}>
       <Label for="examplePassword">Password</Label>
       <Input
         valid={!!getColorFromError(errors.examplePassword)}
@@ -41,7 +41,7 @@ const ControlledForm = ({
       <ValidationErrorMessage message={errors.examplePassword} />
     </FormGroup>
 
-    <FormGroup color={getColorFromError(errors.exampleURL)}>
+    <FormGroup className={getColorFromError(errors.exampleURL)}>
       <Label for="exampleURL">URL</Label>
       <Input
         valid={!!getColorFromError(errors.exampleURL)}
