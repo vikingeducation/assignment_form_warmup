@@ -1,10 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import "./stylesheets/index.scss";
-import { Button } from "reactstrap";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './javascripts/components/App';
+import './stylesheets/index.scss';
 
-ReactDOM.render(<App />, document.getElementById("root"));
-registerServiceWorker();
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
