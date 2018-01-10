@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+//import "./App.css";
 import ModalExample from "./components/ModalExample";
 import HelloWorldComponent from "./components/HelloWorldComponent";
 import ComponentWithTransition from "./components/ComponentWithTransition";
