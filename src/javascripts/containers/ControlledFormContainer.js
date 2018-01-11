@@ -30,12 +30,8 @@ class ControlledFormContainer extends Component {
     console.log("data =>", data);
     const errors = validateForm(data);
 
-    if (errors) {
-      console.log("errors =>", errors);
-      this.setState({errors});
-      console.log("this.state =>", this.state);
-    }
-  };
+    this.setState({errors});
+  }
 
   onSubmit = e => {
     e.preventDefault();
