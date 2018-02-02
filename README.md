@@ -1,1 +1,3 @@
-# React Live Form Validation Example
+# Live Form Validation
+
+Example of form validation using React and validateJS
